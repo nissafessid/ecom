@@ -1,0 +1,174 @@
+   <!-- Header Section Begin -->
+   <header class="header-section">
+    <div class="header-top">
+        <div class="container">
+            <div class="ht-left">
+                <div class="mail-service">
+                    <i class=" fa fa-envelope"></i>
+                    hello.colorlib@gmail.com
+                </div>
+                <div class="phone-service">
+                    <i class=" fa fa-phone"></i>
+                    +65 11.188.888
+                </div>
+            </div>
+            <div class="ht-right">
+                <a *ngIf="!isConnect()" routerLink="/login" class="login-panel"><i class="fa fa-user"></i>Login</a> 
+                <a *ngIf="!isConnect()" routerLink="/registre" class="login-panel"><i class="fa fa-user"></i>register</a>
+                <a  *ngIf="isConnect()" routerLink="/profile" class="login-panel"><i class="fa fa-user"></i>profile</a>
+                <a  *ngIf="isConnect()" (click)="logout()" class="login-panel"><i class="fa fa-user"></i>logout</a>
+
+                <!-- <div class="lan-selector">
+                    <div class="ddOutOfVision" id="countries_msddHolder" style="height: 0px; overflow: hidden; position: absolute;"><select class="language_drop" name="countries" id="countries" style="width:300px;" tabindex="-1">
+                        <option value="yt" data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>
+                        <option value="yu" data-image="img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">German </option>
+                    </select></div><div class="dd ddcommon borderRadius" id="countries_msdd" tabindex="0" style="width: 300px;"><div class="ddTitle borderRadiusTp"><span class="divider"></span><span class="ddArrow arrowoff"></span><span class="ddTitleText " id="countries_title"><img src="img/flag-1.jpg" class="flag yt fnone"><span class="ddlabel">English</span><span class="description" style="display: none;"></span></span></div><input id="countries_titleText" type="text" autocomplete="off" class="text shadow borderRadius" style="display: none;"><div class="ddChild ddchild_ border shadow" id="countries_child" style="z-index: 9999; display: none; position: absolute; visibility: visible; height: 51px;"><ul><li class="enabled _msddli_ selected" title="English"><img src="img/flag-1.jpg" class="flag yt fnone"><span class="ddlabel">English</span><div class="clear"></div></li><li class="enabled _msddli_" title="Bangladesh"><img src="img/flag-2.jpg" class="flag yu fnone"><span class="ddlabel">German</span><div class="clear"></div></li></ul></div></div>
+                </div> -->
+                <div class="top-social">
+                    <a href="#"><i class="ti-facebook"></i></a>
+                    <a href="#"><i class="ti-twitter-alt"></i></a>
+                    <a href="#"><i class="ti-linkedin"></i></a>
+                    <a href="#"><i class="ti-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="inner-header">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="assets/img/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="advanced-search">
+                        <!-- <button type="button" class="category-btn">All Categories</button> -->
+                        <select class="category-btn" [(ngModel)]="category" name="category" (change)="OnChange($event)">
+                          <option  value="All" >All Categories</option>
+                          <option  *ngFor="let c of listcategorys"  [value]="c.title">{{c.title}}</option>
+                        </select>
+                        <!-- <ul class="depart-hover">
+                            <li class="active"><a href="#">Women’s Clothing</a></li>
+                            <li><a href="#">Men’s Clothing</a></li> -->
+                           
+                        <!-- </ul> -->
+                        <div class="input-group">
+                            <input type="text" placeholder="What do you need?">
+                            <button type="button"><i class="ti-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-right col-md-3">
+                    <ul class="nav-right">
+                        <li class="cart-icon">
+                            <a href="#"  (click)="getfavoris()">
+                                <i class="icon_heart_alt"></i>
+                                <span>{{wishlist.length}}</span>
+                            </a>
+                            <div class="cart-hover" >
+                                <div  *ngIf="wishlist.length>0;else nowhishlist" class="select-items"
+                                     >
+                                    <table *ngFor="let l of wishlist;let index=index">
+                                        <tbody>
+                                            <tr>
+                                                <td class="si-pic"><img src="http://localhost:3300/getfile/{{l.image}}" alt=""></td>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>{{l.prix}}</p>
+                                                        <h6>{{l.name}}</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close" (click)="removeProduct(index)">
+                                                    <i class="ti-close"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                                <ng-template #nowhishlist>
+                                    <h6> your whish list is empty</h6>
+                                </ng-template> 
+
+                                <div class="select-total">
+                                    <span>total:</span>
+                                    <h5>{{totalPayableAmt}}</h5>
+                                </div>
+                                 </div> 
+                          
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-item">
+        <div class="container">
+            <div class="nav-depart">
+                <div class="depart-btn">
+                    <i class="ti-menu"></i>
+                    <span>All departments</span>
+                    <ul class="depart-hover">
+                        <li class="active"><a href="#">Women’s Clothing</a></li>
+                        <li><a href="#cat">Men’s Clothing</a></li>
+                        <li><a href="#">Underwear</a></li>
+                        <li><a href="#">Kid's Clothing</a></li>
+                        <li><a href="#">Brand Fashion</a></li>
+                        <li><a href="#">Accessories/Shoes</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="nav-menu mobile-menu">
+                <ul>
+                    <li class="active"><a routerLink="">About</a></li>
+                    <!-- <li><a href="./shop.html">Order</a></li> -->
+                    <li><a routerLink="/product">Products</a>
+                    </li>
+                    <li><a  routerLink="/contact">Contact</a></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="dropdown">
+                            <!-- <li><a href="./blog-details.html">Blog Details</a></li> -->
+                            <li><a routerLink="/cart">Shopping Cart</a></li>
+                            <!-- <li><a href="./faq.html">Faq</a></li> -->
+                            <li><a  routerLink="/registre">Register</a></li>
+                            <li><a routerLink="/cart">Cart</a></li>
+                            <li><a routerLink="/checkout">CheckOut</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div  id="cat"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+                <ul>
+                    <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
+                    <li><a href="./shop.html" role="menuitem">Shop</a></li>
+                    <li class="slicknav_collapsed slicknav_parent" ><a href="#"  role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Collection</a>
+                        <span class="slicknav_arrow" >►</span></a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                            <li><a href="#" role="menuitem" tabindex="-1" >Men's</a></li>
+                            <li><a href="#" role="menuitem" tabindex="-1">Women's</a></li>
+                            <li><a href="#" role="menuitem" tabindex="-1">Kid's</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blog.html" role="menuitem">Blog</a></li>
+                    <li><a href="./contact.html" role="menuitem">Contact</a></li>
+                    <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
+                        <span class="slicknav_arrow">►</span></a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                            <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
+                            <li><a href="./shopping-cart.html" role="menuitem" tabindex="-1">Shopping Cart</a></li>
+                            <li><a href="./check-out.html" role="menuitem" tabindex="-1">Checkout</a></li>
+                            <li><a href="./faq.html" role="menuitem" tabindex="-1">Faq</a></li>
+                            <li><a href="./register.html" role="menuitem" tabindex="-1">Register</a></li>
+                            <li><a href="./login.html" role="menuitem" tabindex="-1">Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav></div></div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->

@@ -1,0 +1,60 @@
+<!-- jsPDF:download pdf -->
+<div class="col-md-8" id="htmlData">
+    <table class="table table-bordered">
+        <tr class="table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <th>12344</th>
+            <td>nissaf</td>
+            <td>essidnissaf@gmail.com</td>
+            <td>2345678</td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+  </div>
+
+ <!-- modal directive -->
+
+  <div class="col-md-2">
+    <button type="button" 
+      class="btn btn-success  btn-block"
+      appModalnew
+      [title]='"Demo Modal 1"'
+      [componentData]="data1"
+      [componentName]="'HeaderComponent'">
+      Demo Modal 1
+    </button>
+  </div>  
+
+
+  <div class="col-md-2">
+    <button type="button" 
+      class="btn btn-danger  btn-block"
+      appModalnew 
+      [title]='"Demo Modal 2"'
+      [componentData]="data2"
+      [componentName]="'HeaderComponent'">
+      Demo Modal 2
+    </button>
+  </div>
+<!-- ToastNotification -->
+  <button (click)="showToast()"><a >Click</a></button>
+
+
+
+<!-- View child -->
+  <div #div1>
+    This is div 1
+  </div>
+
+  <button (click)="insertBeforeDiv1()"><a >View Child</a></button>
+
+
+  <input #accessId placeholder="Whta's your name?">
+  

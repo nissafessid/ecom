@@ -1,0 +1,31 @@
+.cart-header{
+    padding-top: convertEm(15);
+    padding-bottom: convertEm(15);
+    border-bottom: color-grey-light 1px solid;
+
+}
+.product-item{
+    padding-top: convertEm(15);
+    padding-bottom: convertEm(15);
+    border-bottom: 1px solid boder-color;
+  }
+    .qauntity_buy{
+        width: 60px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 5px;
+       
+    }
+
+.product-item:last-child{
+    border-bottom: none;
+}
+.link{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: convertEm(13);
+    cursor: pointer;
+}
+.link:hover{
+    color: "red";
+}

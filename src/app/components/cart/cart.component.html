@@ -1,0 +1,30 @@
+<div class="loader-bg" *ngIf="isLoading">
+    <div class="loader"></div>
+  </div>
+  
+  <div class="container" *ngIf="!isLoading">
+    <div class="row" *ngIf="cartProducts.length > 0">
+        <div class="col-12 col-md-12 col-lg-12 cart-details">
+          <app-cartdetail
+          [custEmail]="email"
+          [cartProducts]="cartProducts"
+          (isCartChanged)="cartChange($event)">
+          </app-cartdetail>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 price-details">
+            <app-cartprice
+            [productLen]="cartProducts.length"
+            [totalPrice]="totalPrice"
+            [totalDeliveryAmt]="totalDeliveryAmt"
+            [totalPayableAmt]="totalPayableAmt"
+            [currencyCode]="currencyCode">
+            </app-cartprice>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-12 no-product text-center" *ngIf="cartProducts.length === 0">
+      <img [src]="imgURL + nopic" alt="no product" class="img-thumbnail" />
+      <h4>Opps sorry, Your cart is empty</h4>
+    </div>
+  </div>
+  </div>
